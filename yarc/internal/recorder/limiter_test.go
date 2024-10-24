@@ -12,7 +12,7 @@ func TestRateLimit(t *testing.T) {
 		{"GET / HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n", false},
 		{"GET /foo/bar HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n", true},
 		{"GET /foo/bar?a=1 HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n", true},
-		{"GET /foo/bar?b=2 HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n", true},
+		{"GET /foo/bar?b=2 HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n", false},
 	}
 
 	limiter := NewRateLimiter(0.1, 2)
